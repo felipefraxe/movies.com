@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const FooterContainer = styled.footer`
   position: absolute;
   bottom: 0;
+  margin-top: 5%;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -10,7 +11,7 @@ export const FooterContainer = styled.footer`
   align-items: center;
 
   hr {
-    width: 65%;
+    width: 80%;
     margin-bottom: 1%;
   }
 

@@ -15,7 +15,12 @@ export default function Home() {
     })
   }, []);
 
-  const movies = moviesArr.map(movie => <li key={ movie.id }>{ movie.title }</li>);
+  const movies = moviesArr.map(movie => (
+    <div key={ movie.id }>
+      <img src={ movie.image_path } alt={ `${movie.title} poster` } />
+      <p>{ movie.title }</p>
+    </div>
+  ));
 
   return (
     <>

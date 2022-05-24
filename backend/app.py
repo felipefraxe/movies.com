@@ -91,7 +91,7 @@ def register():
 
 @app.route("/movies")
 def movies():
-  db.execute("SELECT id, title FROM movie")
+  db.execute("SELECT id, title, image_path FROM movie")
   films = db.fetchall()
 
   try:

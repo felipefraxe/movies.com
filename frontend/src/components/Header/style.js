@@ -25,7 +25,7 @@ export const mainNavContainer = styled.nav`
   }
 
   aside {
-    width: 33%;
+    width: 37%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -52,7 +52,7 @@ export const supportNavContainer = styled.nav`
 
   a {
     width: auto;
-    margin-right: 4%;
+    margin-right: 7%;
     color: #09f;
     text-decoration: none;
     font-size: 1.2rem;
