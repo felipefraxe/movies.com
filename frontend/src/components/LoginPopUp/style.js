@@ -5,11 +5,12 @@ export const popUp = styled.div`
   justify-content: flex-end;
   flex-wrap: wrap;
   position: absolute;
-  height: 30%;
+  height: 27%;
   width: 100%;
+  z-index: 1;
 
   div {
-    width: 30%;
+    width: 27%;
     background-color: #181818;
     border-right: solid white 1px;
     border-height: 80%;

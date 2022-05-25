@@ -25,16 +25,15 @@ export const mainNavContainer = styled.nav`
   }
 
   aside {
-    width: 37%;
+    width: 40%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 
     p {
-      margin-right: 4%;
       color: white;
       cursor: pointer;
-      
+
       svg {
         color: #0073ff;
       }
@@ -51,8 +50,9 @@ export const supportNavContainer = styled.nav`
   height: 2.5rem;
 
   a {
-    width: auto;
-    margin-right: 7%;
+    display: flex;
+    justify-content: space-evenly;
+    width: 12.5%;
     color: #09f;
     text-decoration: none;
     font-size: 1.2rem;

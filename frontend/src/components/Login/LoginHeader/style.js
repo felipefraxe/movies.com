@@ -9,9 +9,8 @@ export const LoginHeaderContainer = styled.header`
 
   a {
     display: flex;
-    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    height: 58%;
   }
 
   img {
@@ -20,7 +19,6 @@ export const LoginHeaderContainer = styled.header`
 
   p {
     font-size: 6.7rem;
-    margin-left: 3%;
     color: #0073ff;
     font-family: 'Proxima Nova Bold';
   }

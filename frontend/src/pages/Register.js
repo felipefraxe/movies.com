@@ -7,8 +7,10 @@ export default function Register() {
   return (
     <>
       <LoginHeader />
-      <RegisterForm />
-      <Footer />
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+        <RegisterForm />
+        <Footer />
+      </div>
     </>
   );
 }

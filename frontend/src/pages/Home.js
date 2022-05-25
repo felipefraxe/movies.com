@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header/Header';
 import { fetchMovies } from '../services';
+import MovieCard from '../components/MovieCard/MovieCard';
 import Footer from '../components/Footer/Footer';
 
 export default function Home() {
@@ -16,19 +17,23 @@ export default function Home() {
   }, []);
 
   const movies = moviesArr.map(movie => (
-    <div key={ movie.id }>
-      <img src={ movie.image_path } alt={ `${movie.title} poster` } />
-      <p>{ movie.title }</p>
-    </div>
+    <MovieCard
+      key={ movie.id }
+      id={ movie.id }
+      title={ movie.title }
+      image_path={ movie.image_path }
+    />
   ));
 
   return (
     <>
       <Header name={ name } />
-      <ul>
-        { movies }
-      </ul>
-      <Footer />
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
+          { movies }
+        </div>
+        <Footer />
+      </div>
     </>
   );
 }

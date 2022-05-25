@@ -7,8 +7,10 @@ export default function Login() {
   return (
     <>
       <LoginHeader />
-      <LoginForm />
-      <Footer />
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+        <LoginForm />
+        <Footer />
+      </div>
     </>
   );
 }
