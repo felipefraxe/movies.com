@@ -61,20 +61,22 @@ export default function LoginForm() {
           value={ formData.email }
           onChange={ handleChange }
         />
-        <input
-          type={ visible }
-          name="password"
-          placeholder="Password"
-          autoComplete="off"
-          required
-          value={ formData.password }
-          onChange={ handleChange }
-        />
-        {
-          visible === 'text'
-          ? <S.ClosedEye onClick={ handleVisibility } />
-          : <S.OpenedEye onClick={ handleVisibility } />
-        }
+        <div>
+          <input
+            type={ visible }
+            name="password"
+            placeholder="Password"
+            autoComplete="off"
+            required
+            value={ formData.password }
+            onChange={ handleChange }
+          />
+          {
+            visible === 'text'
+            ? <S.ClosedEye onClick={ handleVisibility } />
+            : <S.OpenedEye onClick={ handleVisibility } />
+          }
+        </div>
         <input type="submit" value="Login" />
         <p>Don't have an account? <Link to="/register">Register here</Link></p>
       </S.LoginFormContainer>

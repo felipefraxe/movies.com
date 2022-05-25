@@ -61,7 +61,7 @@ export default function RegisterForm() {
             onChange={ handleChange }
           />
         </span>
-        <span>
+        <div name="password-div">
           <input
             name="password"
             type={ visible }
@@ -70,13 +70,13 @@ export default function RegisterForm() {
             value={ formData.password }
             onChange={ handleChange }
           />
-        </span>
-        {
-          visible === 'text'
-            ? <S.ClosedEye onClick={ handleVisibility } />
-            : <S.OpenedEye onClick={ handleVisibility } />
-        }
-        <div>
+          {
+            visible === 'text'
+              ? <S.ClosedEye onClick={ handleVisibility } />
+              : <S.OpenedEye onClick={ handleVisibility } />
+          }
+        </div>
+        <div name="recommendation-div">
           <p><strong>Your password MUST have:</strong></p>
           <p>At least one upper case letter</p>
           <p>At least one number</p>

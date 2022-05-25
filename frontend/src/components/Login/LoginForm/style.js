@@ -4,14 +4,22 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 export const LoginFormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 3%;
-  position: relative;
+  margin: 5% auto 0 auto;
+  width: 33%;
+  height: 15rem;
+  justify-content: space-around;
+
+  div {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+  }
 
   input {
-    margin-top: 1.2%;
-    height: 2.2rem;
-    width: 33%;
+    width: 100%;
+    height: 2.3rem;
     border-radius: 0.3rem;
     border: solid 1px;
     font-size: 0.9rem;
@@ -24,15 +32,15 @@ export const LoginFormContainer = styled.form`
   }
 
   input[type="submit"] {
-    width: 10%;
-    margin-left: 23.5%;
+    width: 30%;
     cursor: pointer;
     background-color: #0073ff;
     color: white;
+    align-self: flex-end;
   }
 
   p {
-    margin-right: 14%;
+    align-self: start;
 
     a {
       color: blue;
@@ -42,14 +50,12 @@ export const LoginFormContainer = styled.form`
 
 export const ClosedEye = styled(AiFillEyeInvisible)`
   position: absolute;
-  margin-top: 6%;
-  margin-left: 31%;
   cursor: pointer;
+  margin-right: 2%;
 `;
 
 export const OpenedEye = styled(AiFillEye)`
   position: absolute;
-  margin-top: 6%;
-  margin-left: 31%;
   cursor: pointer;
+  margin-right: 2%;
 `;

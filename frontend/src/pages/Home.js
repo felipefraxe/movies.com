@@ -28,8 +28,8 @@ export default function Home() {
   return (
     <>
       <Header name={ name } />
-      <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '82.9vh' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap', marginTop: '2%' }}>
           { movies }
         </div>
         <Footer />

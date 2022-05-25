@@ -5,32 +5,13 @@ export const RegisterFormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3%;
+  justify-content: space-between;
+  margin: 3% auto auto auto;
+  width: 40%;
+  height: 19rem;
   position: relative;
-
-  span {
-    display: flex;
-    justify-content: space-between;
-    width: 40%;
-
-    input {
-      width: 47%;
-    }
-  }
-
-  div {
-    width: 11.5%;
-    margin-right: 28.5%;
-    margin-top: 0.5%;
-
-    p {
-      font-size: 0.7rem;
-      margin: 1.5px;
-    }
-  }
-
+  
   input {
-    margin-top: 1rem;
     height: 2.2rem;
     border-radius: 0.3rem;
     border: solid 1px;
@@ -44,26 +25,56 @@ export const RegisterFormContainer = styled.form`
     }
   }
 
+  span {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    input {
+      width: 47%;
+    }
+  }
+
+  div[name="password-div"] {
+    display: flex;
+    width: 47%;
+    align-self: start;
+    position: relative;
+    align-items: center;
+    justify-content: flex-end;
+
+    input {
+      width: 100%;
+    }
+  }
+  
+  div[name="recommendation-div"] {
+    align-self: flex-start;
+
+    p {
+      font-size: 0.7rem;
+      margin: 1.5px;
+    }
+  }
+
   input[type="submit"] {
-    width: 10%;
-    margin-left: 30%;
+    width: 20%;
     cursor: pointer;
     background-color: #0073ff;
     color: white;
+    align-self: flex-end;
   }
 
 `;
 
 export const ClosedEye = styled(AiFillEyeInvisible)`
   position: absolute;
-  margin-top: 9.9%;
-  margin-right: 4%;
   cursor: pointer;
+  margin-right: 2%;
 `;
 
 export const OpenedEye = styled(AiFillEye)`
   position: absolute;
-  margin-top: 9.9%;
-  margin-right: 4%;
   cursor: pointer;
+  margin-right: 2%;
 `;
