@@ -46,7 +46,7 @@ def token_required(f):
 def login():
   data = json.loads(request.data)
 
-  db.execute("SELECT id, password_hash FROM costumer WHERE email = (%s)", (data["email"],))
+  db.execute("SELECT id, name, password_hash FROM costumer WHERE email = (%s)", (data["email"],))
   user = db.fetchall()
   if len(user) != 1:
     return { "error": "Invalid e-mail" }, 401
@@ -60,7 +60,7 @@ def login():
     "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30),
   }, app.config["SECRET_KEY"], "HS512")
 
-  return { "token": token }, 200
+  return { "token": token, "name": user[0]["name"] }, 200
 
 
 @app.route("/register", methods=["POST"])
@@ -93,15 +93,7 @@ def register():
 def movies():
   db.execute("SELECT id, title, image_path FROM movie")
   films = db.fetchall()
-
-  try:
-    token = request.headers["x-access-tokens"]
-    data = decode(token, app.config["SECRET_KEY"], algorithms=["HS512"])
-    db.execute("SELECT name FROM costumer WHERE id = (%s)", (data["id"],))
-    name = db.fetchall()[0]["name"].split(" ")[0]
-    return { "result": films, "name": name }, 200
-  except:
-    return { "result": films }, 200
+  return { "result": films }, 200
 
 
 if __name__ == "__main__":

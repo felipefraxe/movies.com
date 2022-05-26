@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { BsSearch, BsQuestionCircle } from 'react-icons/bs';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { AiOutlineUser } from 'react-icons/ai';
@@ -7,8 +8,9 @@ import LoginPopUp from '../LoginPopUp/LoginPopUp.js';
 
 import * as S from './style.js';
 
-export default function Header({ name }) {
+export default function Header() {
   const [LoginPopUpShow, setLoginPopUpShow] = useState(false);
+  const { username } = useSelector(store => store.userData);
 
   return (
     <>
@@ -20,11 +22,11 @@ export default function Header({ name }) {
         <aside>
           <p><BsSearch /> Search</p>
           <p><HiOutlineLocationMarker /> Location</p>
-          <p onClick={ () => setLoginPopUpShow(state => !state) }><AiOutlineUser /> Hello, { name }</p>
+          <p onClick={ () => setLoginPopUpShow(state => !state) }><AiOutlineUser /> Hello, { username }</p>
           <p><BsQuestionCircle /> Help</p>
         </aside>
       </S.mainNavContainer>
-      { LoginPopUpShow && name === 'Guest' && <LoginPopUp /> }
+      { LoginPopUpShow && username === 'Guest' && <LoginPopUp /> }
       <S.supportNavContainer>
         <Link to="/">Movies</Link>
         <Link to="/">Movie Theaters</Link>

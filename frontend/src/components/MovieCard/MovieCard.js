@@ -1,5 +1,3 @@
-import React from 'react';
-
 import * as S from './style.js';
 
 export default function MovieCard({ id, image_path, title }) {

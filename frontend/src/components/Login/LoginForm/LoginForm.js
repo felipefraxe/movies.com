@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUsername } from '../../../redux/reducers/user';
 import { login } from '../../../services';
 import ErrorAlert from '../../Alert/ErrorAlert';
 
@@ -18,6 +20,7 @@ export default function LoginForm() {
   const disabled = !passwordRegex.test(formData.password) || formData.password.length < 8 || !regexEmail.test(formData.email);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function handleChange({ target: { name, value } }) {
     setFormData(state => ({ ...state, [name]: value }));
@@ -41,13 +44,14 @@ export default function LoginForm() {
     .then(data => {
       if(data.token) {
         localStorage.setItem('token', data.token);
+        dispatch(setUsername({ name: data.name }));
         navigate('/');
       } else {
         setError(data.error);
       }
     });
   }
-  
+
   return (
     <>
       { error && <ErrorAlert error={ error } setError={ setError } /> }

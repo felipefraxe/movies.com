@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { register } from '../../services';
+
 import * as S from './style.js';
 
 export default function RegisterForm() {
