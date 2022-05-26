@@ -14,7 +14,6 @@ export const mainNavContainer = styled.nav`
 
     p {
       font-size: 2.7rem;
-      margin-left: 3%;
       color: #0073ff;
       font-family: 'Proxima Nova Bold';
     }
@@ -28,7 +27,6 @@ export const mainNavContainer = styled.nav`
     width: 40%;
     display: flex;
     justify-content: space-evenly;
-    flex-wrap: wrap;
 
     p {
       color: white;
@@ -51,8 +49,8 @@ export const supportNavContainer = styled.nav`
 
   a {
     display: flex;
-    justify-content: space-evenly;
-    width: 12.5%;
+    justify-content: center;
+    margin: auto 5% auto 0;
     color: #09f;
     text-decoration: none;
     font-size: 1.2rem;

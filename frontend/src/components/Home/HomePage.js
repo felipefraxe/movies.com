@@ -25,6 +25,7 @@ export default function HomePage() {
 
   return (
     <>
+      <S.homePageText>NOW PLAYING</S.homePageText>
       <S.homePageContainer>
         { movies }
       </S.homePageContainer>

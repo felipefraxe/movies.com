@@ -5,7 +5,7 @@ export const movieCardContainer = styled(Link)`
   display: flex;
   justify-content: center;
   width: 15rem;
-  margin: 1% auto 1% auto ;
+  margin: 1% 0 1% 0;
   cursor: pointer;
 
   img {

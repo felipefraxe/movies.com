@@ -1,7 +1,9 @@
+import MoviePage from '../components/MoviePage/MoviePage';
+
 export default function Movie() {
   return (
     <>
-      Specific movie Screen
+      <MoviePage />
     </>
   );
 }

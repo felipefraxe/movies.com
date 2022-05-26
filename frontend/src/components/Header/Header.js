@@ -29,7 +29,7 @@ export default function Header() {
       { LoginPopUpShow && username === 'Guest' && <LoginPopUp /> }
       <S.supportNavContainer>
         <Link to="/">Movies</Link>
-        <Link to="/">Movie Theaters</Link>
+        <Link to="/">Theatres</Link>
         <Link to="/">News</Link>
         <Link to="/">Fan Store</Link>
       </S.supportNavContainer>

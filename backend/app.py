@@ -91,9 +91,16 @@ def register():
 
 @app.route("/movies")
 def movies():
-  db.execute("SELECT id, title, image_path FROM movie")
+  db.execute("SELECT id, title, image_path FROM movies LIMIT 10")
   films = db.fetchall()
   return { "result": films }, 200
+
+
+@app.route("/movie/<id>")
+def movie(id):
+  db.execute("SELECT title, image_path, year FROM movies WHERE id = (%s)", (id,))
+  film = db.fetchall()
+  return { "result": film }, 200
 
 
 if __name__ == "__main__":

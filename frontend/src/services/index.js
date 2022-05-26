@@ -7,13 +7,21 @@ async function customFetch(BASE_URL, ROUTE, headerObj) {
   .catch(error => console.error('Error: ', error));
 }
 
-export function fetchMovies() {
-  const ENDPOINT = '/movies';
-  const token = localStorage.getItem('token');
-  return customFetch(BASE_URL, ENDPOINT, {
+/*
+ {
     method: 'GET',
     headers: { 'x-access-tokens': token }
-  });
+  }
+*/
+
+export function fetchMovies() {
+  const ENDPOINT = '/movies';
+  return customFetch(BASE_URL, ENDPOINT);
+}
+
+export function fetchMovie(id) {
+  const ENDPOINT = '/movie/' + id;
+  return customFetch(BASE_URL, ENDPOINT)
 }
 
 export function login(email, password) {
