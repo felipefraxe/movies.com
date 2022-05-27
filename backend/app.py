@@ -21,6 +21,7 @@ conn = connect(
   password = os.environ.get("db_password")
 )
 db = conn.cursor(cursor_factory=extras.RealDictCursor)
+
 CORS(app)
 
 def token_required(f):
@@ -98,9 +99,21 @@ def movies():
 
 @app.route("/movie/<id>")
 def movie(id):
-  db.execute("SELECT title, image_path, year FROM movies WHERE id = (%s)", (id,))
+  db.execute("""SELECT title, image_path, year, genre, duration, mpaa, rating
+    FROM movies JOIN movies_info ON movies.id = movies_info.movie_id
+    WHERE movies.id = (%s)""",
+  (id,))
   film = db.fetchall()
-  return { "result": film }, 200
+
+  db.execute("SELECT id, name FROM theaters")
+  theaters = db.fetchall()
+
+  return {
+    "result": {
+      "film": film,
+      "theaters": theaters,
+    }
+  }, 200
 
 
 if __name__ == "__main__":
