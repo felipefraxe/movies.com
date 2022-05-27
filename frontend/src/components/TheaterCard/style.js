@@ -16,8 +16,9 @@ export const theaterCardContainer = styled.div`
   hr {
     width: 95%;
     margin-right: 2%;
-    opacity: 0.2;
+    opacity: 0.3;
   }
+
   span {
     display: flex;
     align-items: center;

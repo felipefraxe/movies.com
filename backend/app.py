@@ -6,7 +6,7 @@ from flask import Flask, request, json
 from flask_cors import CORS
 from werkzeug.security import check_password_hash, generate_password_hash
 from re import search
-from psycopg2 import connect, extras 
+from psycopg2 import connect, extras
 from jwt import encode, decode
 
 # from helpers.auth import token_required
@@ -105,8 +105,13 @@ def movie(id):
   (id,))
   film = db.fetchall()
 
+  if len(film) != 1:
+    return { "error": "Could not find this movie" }, 404
+
   db.execute("SELECT id, name FROM theaters")
   theaters = db.fetchall()
+  if len(theaters) == 0:
+    return { "error": "Could not find theaters at this location" }, 404
 
   return {
     "result": {

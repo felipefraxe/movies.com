@@ -5,7 +5,7 @@ export default function Footer() {
     <>
       <hr style={{ width: '70%', margin: 'auto auto 0 auto' }}/>
       <S.FooterContainer>
-        <p>Created and developed by Felipe Fraxe, software developer student</p>
+        <p>Designed and created by Felipe Fraxe, software engineer student</p>
         <div>
           <a href="https://www.github.com/felipefraxe" target="_blank" rel="noreferrer">
             <img src="/github.png" alt="GitHub Logo" />

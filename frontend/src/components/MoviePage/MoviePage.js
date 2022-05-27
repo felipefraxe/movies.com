@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { fetchMovie } from '../../services';
 import TheaterCard from '../TheaterCard/TheaterCard';
 
@@ -10,14 +10,19 @@ export default function MoviePage() {
   const [theaters, setTheaters] = useState([]);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMovie(id)
     .then(data => {
-      setMovieData(data.result.film[0]);
-      setTheaters(data.result.theaters);
+      if(data.result) {
+        setMovieData(data.result.film[0]);
+        setTheaters(data.result.theaters);
+      } else {
+        navigate('/notfound');
+      }
     });
-  }, [id]);
+  }, [id, navigate]);
 
   const theatersList = theaters.map(theater => (
     <TheaterCard
