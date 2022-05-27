@@ -8,10 +8,10 @@ export default function Footer() {
         <p>Created and developed by Felipe Fraxe, software developer student</p>
         <div>
           <a href="https://www.github.com/felipefraxe" target="_blank" rel="noreferrer">
-            <img src="github.png" alt="GitHub Logo" />
+            <img src="/github.png" alt="GitHub Logo" />
           </a>
           <a href="https://www.linkedin.com/in/felipefraxe" target="_blank" rel="noreferrer">
-            <img src="linkedin.png" alt="Linkedin Logo" />
+            <img src="/linkedin.png" alt="Linkedin Logo" />
           </a>
         </div>
       </S.FooterContainer>

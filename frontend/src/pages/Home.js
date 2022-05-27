@@ -5,7 +5,7 @@ import Footer from '../components/Footer/Footer';
 export default function Home() {
   return (
     <>
-      <Header name='Guest' />
+      <Header />
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '82.9vh' }}>
         <HomePage />
         <Footer />

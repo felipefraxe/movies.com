@@ -11,13 +11,16 @@ export default function MoviePage() {
   useEffect(() => {
     fetchMovie(id)
     .then(data => setMovieData(data.result[0]));
-  }, []);
+  }, [id]);
 
   return (
     <>
-      <img src={ movieData.image_path } alt={ `${movieData.title} poster` } />
-      <p>{ movieData.title }</p>
-      <p>{ movieData.year }</p>
+      <S.movieDataContainer>
+        <img src={ movieData.image_path } alt={ `${movieData.title} poster` } />
+        <div>
+          <p>{ `${movieData.title} (${movieData.year})` }</p>
+        </div>
+      </S.movieDataContainer>
     </>
   );
 }

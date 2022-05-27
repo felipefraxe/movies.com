@@ -16,7 +16,7 @@ export default function Header() {
     <>
       <S.mainNavContainer>
         <Link to="/">
-          <img src="popcorn.png" alt="Popcorn time logo" />
+          <img src="/popcorn.png" alt="Popcorn time logo" />
           <p>movies.com</p>
         </Link>
         <aside>
@@ -29,7 +29,7 @@ export default function Header() {
       { LoginPopUpShow && username === 'Guest' && <LoginPopUp /> }
       <S.supportNavContainer>
         <Link to="/">Movies</Link>
-        <Link to="/">Theatres</Link>
+        <Link to="/">Theaters</Link>
         <Link to="/">News</Link>
         <Link to="/">Fan Store</Link>
       </S.supportNavContainer>
