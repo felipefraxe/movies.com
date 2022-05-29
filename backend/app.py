@@ -9,8 +9,6 @@ from re import search
 from psycopg2 import connect, extras
 from jwt import encode, decode
 
-# from helpers.auth import token_required
-
 app = Flask(__name__)
 
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
@@ -67,7 +65,6 @@ def login():
 @app.route("/register", methods=["POST"])
 def register():
   data = json.loads(request.data)
-  print(data)
   if data["email"] != data["emailConfirmation"]:
     return { "error": "E-mail and E-mail confirmation must match" }
 
@@ -97,26 +94,30 @@ def movies():
   return { "result": films }, 200
 
 
-@app.route("/movie/<id>")
-def movie(id):
+@app.route("/movie/<movie_id>")
+def movie(movie_id):
   db.execute("""SELECT title, image_path, year, genre, duration, mpaa, rating
-    FROM movies JOIN movies_info ON movies.id = movies_info.movie_id
+    FROM
+      movies JOIN movies_info ON movies.id = movies_info.movie_id
     WHERE movies.id = (%s)""",
-  (id,))
+  (movie_id,))
   film = db.fetchall()
-
   if len(film) != 1:
     return { "error": "Could not find this movie" }, 404
 
-  db.execute("SELECT id, name FROM theaters")
-  theaters = db.fetchall()
-  if len(theaters) == 0:
-    return { "error": "Could not find theaters at this location" }, 404
+  db.execute("""SELECT theaters.id AS theater_id, sessions.id AS session_id,
+    theaters.name, to_char(date, 'HH24:MI') AS time, number
+    FROM
+      rooms JOIN sessions ON rooms.id = sessions.room_id JOIN theaters ON theaters.id = rooms.theater_id
+    WHERE sessions.movie_id = (%s) AND theaters.city = (%s)
+    ORDER BY theater_id, number ASC""",
+  (movie_id, 'Manaus'))
+  sessions = db.fetchall()
 
   return {
     "result": {
       "film": film,
-      "theaters": theaters,
+      "sessions": sessions
     }
   }, 200
 

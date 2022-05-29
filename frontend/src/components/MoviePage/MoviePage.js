@@ -7,7 +7,7 @@ import * as S from './style';
 
 export default function MoviePage() {
   const [movieData, setMovieData] = useState({});
-  const [theaters, setTheaters] = useState([]);
+  const [sessions, setSessions] = useState([]);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -17,20 +17,43 @@ export default function MoviePage() {
     .then(data => {
       if(data.result) {
         setMovieData(data.result.film[0]);
-        setTheaters(data.result.theaters);
+        setSessions(data.result.sessions);
       } else {
         navigate('/notfound');
       }
     });
   }, [id, navigate]);
 
-  const theatersList = theaters.map(theater => (
+  const theaterList = sessions.reduce((acc, session) => {
+    const theater = acc.find(theater => theater?.id === session.theater_id);
+    if(!theater) {
+      return [...acc, {
+        id: session.theater_id,
+        name: session.name,
+        rooms: [{ number: session.number, times: [{ time: session.time, id: session.session_id }] }]
+      }];
+    }
+
+    const room = theater.rooms.find(room => room.number === session.number);
+    if(!room) {
+      theater.rooms.push({ number: session.number, times: [{ time: session.time, id: session.session_id }] });
+      return acc;
+    }
+
+    room.number === session.number
+      ? room.times.push({ time:session.time, id: session.session_id })
+      : room.push({ number: session.number, times: [{ time: session.time, id: session.session_id }] });
+    return acc;
+  }, []);
+
+  const theaterCardsList = theaterList.map(theater => (
     <TheaterCard
       key={ theater.id }
       id={ theater.id }
+      rooms={ theater.rooms }
       name={ theater.name }
     />
-  ));
+  ))
 
   const genreList = movieData.genre?.slice(0, 3)
     .map((item, key) => <p key={ key }>{ item }</p>);
@@ -52,9 +75,9 @@ export default function MoviePage() {
           </S.otherDataContainer>
         </div>
       </S.movieDataContainer>
-      <S.theaterDataContainer>
-        { theatersList }
-      </S.theaterDataContainer>
+      <S.sessionsDataContainer>
+        { theaterCardsList }
+      </S.sessionsDataContainer>
     </>
   );
 }

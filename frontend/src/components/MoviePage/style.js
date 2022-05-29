@@ -22,7 +22,7 @@ export const movieDataContainer = styled.div`
   }
 `;
 
-export const theaterDataContainer = styled.div`
+export const sessionsDataContainer = styled.div`
   display: flex;
   width: 70%;
   flex-direction: column;

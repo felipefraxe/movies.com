@@ -33,6 +33,12 @@ export const theaterCardContainer = styled.div`
   p {
     color: white;
   }
+
+  div {
+    p {
+      font-family: 'Proxima Nova';
+    }
+  }
 `;
 
 export const heartFill = styled(BsHeartFill)`
@@ -42,4 +48,19 @@ export const heartFill = styled(BsHeartFill)`
 
 export const heartVoid = styled(BsHeart)`
   cursor: pointer;
+`;
+
+export const timeContainer = styled.div`
+  display: flex;
+
+  a {
+    margin-right: 1%;
+    border: solid #0099FF 2px;
+    border-radius: 0.2rem;
+    padding: 2% 6% 1.5% 6%;
+    color: #0099FF;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
 `;
