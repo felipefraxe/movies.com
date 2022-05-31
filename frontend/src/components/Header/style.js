@@ -37,7 +37,6 @@ export const mainNavContainer = styled.nav`
       }
     }
   }
-}
 `;
 
 export const supportNavContainer = styled.nav`
@@ -59,5 +58,4 @@ export const supportNavContainer = styled.nav`
       width: 100%;
     }
   }
-}
 `;

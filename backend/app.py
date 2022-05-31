@@ -110,7 +110,7 @@ def movie(movie_id):
     FROM
       rooms JOIN sessions ON rooms.id = sessions.room_id JOIN theaters ON theaters.id = rooms.theater_id
     WHERE sessions.movie_id = (%s) AND theaters.city = (%s)
-    ORDER BY theater_id, number ASC""",
+    ORDER BY theater_id, number, time ASC""",
   (movie_id, 'Manaus'))
   sessions = db.fetchall()
 
@@ -121,6 +121,17 @@ def movie(movie_id):
     }
   }, 200
 
+
+@app.route("/session/<session_id>")
+def session(session_id):
+  db.execute("""SELECT name, id FROM seats WHERE room_id IN
+    (SELECT room_id FROM sessions WHERE id = %s)""", (session_id,))
+  seats = db.fetchall()
+
+  db.execute("SELECT seat_id FROM tickets WHERE session_id = %s", (session_id,))
+  ocupied = db.fetchall()
+
+  return { "result": { "seats": seats, "ocupied": ocupied } }, 200
 
 if __name__ == "__main__":
   app.run(host="0.0.0.0", debug=True)

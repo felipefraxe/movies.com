@@ -19,11 +19,6 @@ export function fetchMovies() {
   return customFetch(BASE_URL, ENDPOINT);
 }
 
-export function fetchMovie(id) {
-  const ENDPOINT = '/movie/' + id;
-  return customFetch(BASE_URL, ENDPOINT)
-}
-
 export function login(email, password) {
   const ENDPOINT = '/login';
   return customFetch(BASE_URL, ENDPOINT, {
@@ -38,4 +33,14 @@ export function register(firstName, lastName, email, emailConfirmation, password
     method: 'POST',
     body: JSON.stringify({ firstName, lastName, email, emailConfirmation, password })
   });
+}
+
+export function fetchMovie(id) {
+  const ENDPOINT = '/movie/' + id;
+  return customFetch(BASE_URL, ENDPOINT);
+}
+
+export function fetchSession(id) {
+  const ENDPOINT = '/session/' + id;
+  return customFetch(BASE_URL, ENDPOINT);
 }

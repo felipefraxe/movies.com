@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Movie from '../pages/Movie';
+import Session from '../pages/Session';
 import NotFound from '../pages/NotFound';
 
 export default function AppRoutes() {
@@ -14,6 +15,7 @@ export default function AppRoutes() {
         <Route path="/login" element={ <Login /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/movie/:id" element={ <Movie /> } />
+        <Route path="/session/:id" element={ <Session /> } />
         <Route path="*" element={ <NotFound /> } />
       </Routes>
     </BrowserRouter>
