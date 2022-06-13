@@ -7,12 +7,14 @@ async function customFetch(BASE_URL, ROUTE, headerObj) {
   .catch(error => console.error('Error: ', error));
 }
 
-/*
- {
-    method: 'GET',
-    headers: { 'x-access-tokens': token }
-  }
-*/
+export function buyTickets(seats, session_id, token) {
+  const ENDPOINT = '/buy';
+  return customFetch(BASE_URL, ENDPOINT, {
+    method: 'POST',
+    headers: { 'X-Access-Token': token },
+    body: JSON.stringify({ seats, session_id })
+  });
+}
 
 export function fetchMovies() {
   const ENDPOINT = '/movies';

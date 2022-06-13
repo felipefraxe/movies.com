@@ -26,9 +26,9 @@ def token_required(f):
   @wraps(f)
   def decorator(*args, **kwargs):
     token = None
-    if "x-access-tokens" in request.headers:
-      token = request.headers["x-access-tokens"]
- 
+    if "X-Access-Token" in request.headers:
+      token = request.headers["X-Access-Token"]
+    print(request.headers)
     if not token:
       return { "message": "a valid token is missing" }
     try:
@@ -124,14 +124,54 @@ def movie(movie_id):
 
 @app.route("/session/<session_id>")
 def session(session_id):
+  db.execute("""SELECT title, image_path FROM movies WHERE id IN
+    (SELECT movie_id FROM sessions WHERE id = %s)""", (session_id,))
+  movie = db.fetchall()
+
+  db.execute("""SELECT theaters.name, rooms.number
+    FROM theaters JOIN rooms ON theaters.id = rooms.theater_id WHERE rooms.id IN
+    (SELECT room_id FROM sessions WHERE id = %s)""", (session_id,))
+  theater = db.fetchall()
+
+  db.execute("""SELECT to_char(date, 'Day') AS weekday, to_char(date, 'DD/MM HH24:MI') AS date
+    FROM sessions WHERE id = %s""", (session_id,))
+  date = db.fetchall()
+
   db.execute("""SELECT name, id FROM seats WHERE room_id IN
     (SELECT room_id FROM sessions WHERE id = %s)""", (session_id,))
   seats = db.fetchall()
 
   db.execute("SELECT seat_id FROM tickets WHERE session_id = %s", (session_id,))
-  ocupied = db.fetchall()
+  occupied = list(map(lambda seat_data: seat_data["seat_id"], db.fetchall()))
 
-  return { "result": { "seats": seats, "ocupied": ocupied } }, 200
+  return { "result": {
+    "movie": movie,
+    "theater": theater,
+    "date": date,
+    "seats": seats,
+    "occupied": occupied,
+  } }, 200
+
+
+@app.route("/buy", methods=["POST"])
+@token_required
+def buy(user):
+  data = json.loads(request.data)
+  db.execute("SELECT seat_id FROM tickets WHERE session_id = %s", (data["session_id"]))
+  occupied = db.fetchall()
+  for occupied_seat in occupied["seat_id"]:
+    for seat_id in data["seats"]:
+      if seat_id == occupied_seat:
+        return { "message": "ticket unavailable" }
+  try:
+    for seat_id in data["seats"]:
+      db.execute("INSERT INTO tickets (costumer_id, session_id, seat_id) VALUES (%s, %s, %s)",
+        (user["id"], data["session_id"], seat_id))
+    conn.commit()
+    return { "message": "Successfully bought ticket(s)" }, 200
+  except:
+    return { "message": "Something went wrong" }, 501
+
 
 if __name__ == "__main__":
   app.run(host="0.0.0.0", debug=True)

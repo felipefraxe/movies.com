@@ -2,8 +2,31 @@ import styled from 'styled-components';
 
 export const sessionPageContainer = styled.div`
   display: flex;
-  width: 80%;
+  width: 85%;
   margin: 1% auto 5% auto;
+`;
+
+export const sessionDataContainer = styled.div`
+  display: flex;
+
+  img {
+    width: 30%;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 3%;
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
 `;
 
 export const sessionSeatsContainer = styled.div`
@@ -33,16 +56,29 @@ export const sessionSeatsContainer = styled.div`
       justify-content: center;
       align-items: center;
       background-color: #09f;
-      width: 4%;
+      width: 4.3%;
       margin-bottom: 2%;
       color: #09f;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 70%;
 
       &:hover {
-        background-color: #e00;
+        background-color: #D00;
         color: white;
+        font-weight: 700;
       }
+    }
+
+    .clicked {
+      background-color: #D00;
+      color: white;
+      font-weight: 700;
+    }
+
+    .occupied {
+      background-color: #333;
+      color: #333;
+      pointer-events: none;
     }
   }
 
@@ -50,13 +86,38 @@ export const sessionSeatsContainer = styled.div`
     text-align: center;
     background-color: gray;
     width: 90%;
-    margin: 10% auto auto auto;
+    margin: 5% auto auto auto;
   }
 `;
 
 export const sessionOrderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: solid 2px;
   width: 25%;
+
+  div {
+    display: flex;
+
+    span {
+      color: black;
+    }
+  }
+
+  hr {
+    width: 95%;
+    margin: 15% auto 15% 0;
+  }
+    
+  input {
+    border-radius: 0.3rem;
+    border: solid 1px;
+    width: 100%;
+    margin-top: 5%;
+    height: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #0073ff;
+    color: white;
+    align-self: flex-end;
+  }
 `;
