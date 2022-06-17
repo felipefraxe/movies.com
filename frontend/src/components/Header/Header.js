@@ -20,7 +20,7 @@ export default function Header() {
           <p>movies.com</p>
         </Link>
         <aside>
-          <p><BsSearch /> Search</p>
+          <p><BsSearch /><Link to="/search">Search</Link></p>
           <p><HiOutlineLocationMarker /> Location</p>
           <p onClick={ () => setLoginPopUpShow(state => !state) }><AiOutlineUser /> Hello, { username }</p>
           <p><BsQuestionCircle /> Help</p>

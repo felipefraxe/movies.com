@@ -23,6 +23,8 @@ export const LoginFormContainer = styled.form`
     border-radius: 0.3rem;
     border: solid 1px;
     font-size: 0.9rem;
+    padding-left: 1%;
+    box-sizing: border-box;
 
     &:focus {
       outline: none;

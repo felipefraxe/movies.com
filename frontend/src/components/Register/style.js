@@ -17,6 +17,8 @@ export const RegisterFormContainer = styled.form`
     border: solid 1px;
     font-size: 0.9rem;
     width: 33%;
+    padding-left: 1%;
+    box-sizing: border-box;
 
     &:focus {
       outline: none;

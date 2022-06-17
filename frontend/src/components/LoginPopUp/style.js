@@ -8,7 +8,7 @@ export const popUp = styled.div`
   z-index: 1;
   height: 27%;
   width: 100%;
-
+  
   div {
     background-color: #181818;
     width: 25%;
@@ -38,12 +38,14 @@ export const popUp = styled.div`
       text-decoration: none;
     }
   }
-
+  
   div[name="register-half"] {
     border-right: solid white 1px;
+    border-radius: 2px;
   }
 
   div[name="login-half"] {
+    border-radius: 5px;
     padding-bottom: 2.5rem;
 
     p {

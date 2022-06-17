@@ -8,11 +8,11 @@ async function customFetch(BASE_URL, ROUTE, headerObj) {
 }
 
 export function buyTickets(seats, session_id, token) {
-  const ENDPOINT = '/buy';
+  const ENDPOINT = `/sessions/${session_id}/buy`;
   return customFetch(BASE_URL, ENDPOINT, {
     method: 'POST',
     headers: { 'X-Access-Token': token },
-    body: JSON.stringify({ seats, session_id })
+    body: JSON.stringify({ seats })
   });
 }
 
@@ -22,7 +22,7 @@ export function fetchMovies() {
 }
 
 export function login(email, password) {
-  const ENDPOINT = '/login';
+  const ENDPOINT = '/auth/login';
   return customFetch(BASE_URL, ENDPOINT, {
     method: 'POST',
     body: JSON.stringify({ email, password })
@@ -30,7 +30,7 @@ export function login(email, password) {
 }
 
 export function register(firstName, lastName, email, emailConfirmation, password) {
-  const ENDPOINT = '/register';
+  const ENDPOINT = '/auth/register';
   return customFetch(BASE_URL, ENDPOINT, {
     method: 'POST',
     body: JSON.stringify({ firstName, lastName, email, emailConfirmation, password })
@@ -38,11 +38,16 @@ export function register(firstName, lastName, email, emailConfirmation, password
 }
 
 export function fetchMovie(id) {
-  const ENDPOINT = '/movie/' + id;
+  const ENDPOINT = '/movies/' + id;
   return customFetch(BASE_URL, ENDPOINT);
 }
 
 export function fetchSession(id) {
-  const ENDPOINT = '/session/' + id;
+  const ENDPOINT = '/sessions/' + id;
+  return customFetch(BASE_URL, ENDPOINT);
+}
+
+export function search(q) {
+  const ENDPOINT = '/search?q=' + q;
   return customFetch(BASE_URL, ENDPOINT);
 }

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Header from '../components/Header/Header';
 import SessionPage from '../components/Session/SessionPage';
 import Footer from '../components/Footer/Footer';

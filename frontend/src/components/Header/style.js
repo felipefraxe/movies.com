@@ -31,9 +31,15 @@ export const mainNavContainer = styled.nav`
     p {
       color: white;
       cursor: pointer;
+      display: flex;
 
       svg {
         color: #0073ff;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
       }
     }
   }

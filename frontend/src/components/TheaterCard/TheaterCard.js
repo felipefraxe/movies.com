@@ -15,7 +15,7 @@ export default function TheaterCard({ id, name, rooms,  }) {
       <p><strong>{ `Room ${room.number}` }</strong></p>
       <S.timeContainer>
         { room.times.map((time) => (
-          <Link key={ time.id } to={ `/session/${time.id}` }>
+          <Link key={ time.id } to={ `/sessions/${time.id}` }>
             <p><strong>{ time.time }</strong></p>
           </Link>
         )) }

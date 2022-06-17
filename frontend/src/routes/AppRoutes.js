@@ -6,6 +6,7 @@ import Register from '../pages/Register';
 import Movie from '../pages/Movie';
 import Session from '../pages/Session';
 import NotFound from '../pages/NotFound';
+import Search from '../pages/Search';
 
 export default function AppRoutes() {
   return (
@@ -14,8 +15,9 @@ export default function AppRoutes() {
         <Route path="/" element={ <Home /> } />
         <Route path="/login" element={ <Login /> } />
         <Route path="/register" element={ <Register /> } />
-        <Route path="/movie/:id" element={ <Movie /> } />
-        <Route path="/session/:id" element={ <Session /> } />
+        <Route path="/movies/:id" element={ <Movie /> } />
+        <Route path="/sessions/:id" element={ <Session /> } />
+        <Route path="/search" element={ <Search /> } />
         <Route path="*" element={ <NotFound /> } />
       </Routes>
     </BrowserRouter>
